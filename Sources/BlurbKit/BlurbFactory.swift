@@ -13,7 +13,7 @@ public struct BlurbFactory {
         case noAvailableProvider(type: UTType)
     }
     
-    private static let registeredProviders: [any BlurbProvider.Type] = [TextBlurbProvider.self]
+    private static let registeredProviders: [any BlurbProvider.Type] = [TextBlurbProvider.self, PDFBlurbProvider.self]
     
     public static var availableUniformTypes: [UTType] {
         return registeredProviders.flatMap({$0.fileTypes})
