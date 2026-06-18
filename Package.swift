@@ -5,6 +5,13 @@ import PackageDescription
 
 let package = Package(
     name: "BlurbKit",
+    platforms: [
+        .iOS(.v13),
+        .macOS(.v13),
+        .tvOS(.v13),
+        .visionOS(.v1),
+        .watchOS(.v4)
+    ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -20,7 +27,10 @@ let package = Package(
         ),
         .testTarget(
             name: "BlurbKitTests",
-            dependencies: ["BlurbKit"]
+            dependencies: ["BlurbKit"],
+            resources: [
+                .copy("Resources")
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]
