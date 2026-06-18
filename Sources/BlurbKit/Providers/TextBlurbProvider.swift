@@ -8,16 +8,18 @@
 import UniformTypeIdentifiers
 import FoundationModels
 
-struct TextBlurbProvider: BlurbProvider {
-    enum TextBlurbProviderError: Error {
+public struct TextBlurbProvider: BlurbProvider {
+    public enum TextBlurbProviderError: Error {
         case intelligenceModelNotAvailable
     }
     
-    static let fileTypes: [UTType] = [.text, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, UTType("com.unkown.md")!]
+    public static let fileTypes: [UTType] = [.text, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, UTType("com.unkown.md")!]
 
     let descriptionCharacterLength = 140
-
-    func blurb(for url: URL) async throws -> Blurb {
+    
+    public init() { }
+    
+    public func blurb(for url: URL) async throws -> Blurb {
         guard url.isFileURL else { throw BlurbProviderError.notALocalFile }
         let content = try getContent(url: url)
         
@@ -37,7 +39,7 @@ struct TextBlurbProvider: BlurbProvider {
         return Blurb(title: url.name(), description: description)
     }
     
-    func blurb(for url: URL) throws -> Blurb {
+    public func blurb(for url: URL) throws -> Blurb {
         guard url.isFileURL else { throw BlurbProviderError.notALocalFile }
         
         let content = try getContent(url: url)

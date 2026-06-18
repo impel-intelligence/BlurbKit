@@ -4,7 +4,7 @@
 import Foundation
 import UniformTypeIdentifiers
 
-enum BlurbProviderError: Error {
+public enum BlurbProviderError: Error {
     case notALocalFile
     case fileNotReadable
     case unsupportedMimeType

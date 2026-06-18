@@ -9,17 +9,19 @@ import UniformTypeIdentifiers
 import FoundationModels
 import PDFKit
 
-struct PDFBlurbProvider: BlurbProvider {
-    enum PDFBlurbProviderError: Error {
+public struct PDFBlurbProvider: BlurbProvider {
+    public enum PDFBlurbProviderError: Error {
         case urlNotAValidPDF
         case noTextInDocument
     }
     
-    static let fileTypes: [UTType] = [.pdf, UTType("com.adobe.pdf")!]
+    public static let fileTypes: [UTType] = [.pdf, UTType("com.adobe.pdf")!]
 
     let descriptionCharacterLength = 140
+    
+    public init() { }
 
-    func blurb(for url: URL) async throws -> Blurb {
+    public func blurb(for url: URL) async throws -> Blurb {
         guard url.isFileURL else { throw BlurbProviderError.notALocalFile }
         
         let content = try getContent(url: url)
@@ -39,7 +41,7 @@ struct PDFBlurbProvider: BlurbProvider {
         return Blurb(title: url.name(), description: description)
     }
     
-    func blurb(for url: URL) throws -> Blurb {
+    public func blurb(for url: URL) throws -> Blurb {
         guard url.isFileURL else { throw BlurbProviderError.notALocalFile }
         
         let content = try getContent(url: url)
