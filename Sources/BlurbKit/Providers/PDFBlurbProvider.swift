@@ -15,7 +15,7 @@ public struct PDFBlurbProvider: BlurbProvider {
         case noTextInDocument
     }
     
-    public static let fileTypes: [UTType] = [.pdf, UTType("com.adobe.pdf")!]
+    public static let fileTypes: [UTType] = [.pdf]
 
     let descriptionCharacterLength = 140
     

@@ -16,7 +16,7 @@ struct FactoryTests {
         UTType.cHeader,
         UTType.cSource,
         UTType.swiftSource,
-        UTType("com.unknown.md")!
+        UTType("net.daringfireball.markdown")!
     ]) func testTxtDigesterReturned(utType: UTType) throws {
         let returnedDigester = try BlurbFactory.provider(for: utType)
         #expect(type(of: TextBlurbProvider()) == type(of: returnedDigester))
@@ -25,7 +25,6 @@ struct FactoryTests {
     
     @Test("Ensure the pdf digester is returned by the factory is correct for various pdf UTTypes.", arguments: [
         UTType.pdf,
-        UTType("com.adobe.pdf")!,
     ]) func testPDFDigesterReturned(utType: UTType) throws {
         let returnedDigester = try BlurbFactory.provider(for: utType)
         #expect(type(of: PDFBlurbProvider()) == type(of: returnedDigester))

@@ -13,7 +13,7 @@ public struct TextBlurbProvider: BlurbProvider {
         case intelligenceModelNotAvailable
     }
     
-    public static let fileTypes: [UTType] = [.text, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, UTType("com.unknown.md")!]
+    public static let fileTypes: [UTType] = [.text, .plainText, .utf8PlainText, .utf16PlainText, .utf16ExternalPlainText, UTType(importedAs: "net.daringfireball.markdown")]
 
     let descriptionCharacterLength = 140
     
